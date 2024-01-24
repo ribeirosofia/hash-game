@@ -1,3 +1,5 @@
+from random import randrange
+
 def display_board(board):
     print("+-------" * 3, "+", sep="")
     for row in range(3):
@@ -54,3 +56,11 @@ def victory_for(board, sgn):
         if cross1 or cross2:
             return who
         return None
+    
+def draw_move(board):
+    free = make_list_of_free_fields(board) 
+    cnt = len(free)
+    if cnt > 0:
+        this = randrange(cnt)
+        row, col = free[this]
+        board[row][col] = 'X'
