@@ -81,3 +81,12 @@ while len(free):
         break
     human_turn = not human_turn
     free = make_list_of_free_fields(board)
+
+display_board(board)
+if victor == 'you':
+    print("You won!")
+elif victor == 'me':
+    print("I won")
+else:
+    print("Tie!")
+ 
