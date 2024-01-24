@@ -24,4 +24,12 @@ def enter_move(board):
         if not ok:  
             print("Campo já ocupado – repita sua entrada!")
             continue
-    board[row][col] = 'O' 	
+    board[row][col] = 'O' 
+
+    def make_list_of_free_fields(board):
+        free = []
+        for row in range(3):  
+            for col in range(3): 
+                if board[row][col] not in ['O', 'X']:  
+                    free.append((row, col))
+        return free
