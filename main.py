@@ -33,3 +33,24 @@ def enter_move(board):
                 if board[row][col] not in ['O', 'X']:  
                     free.append((row, col))
         return free
+    
+def victory_for(board, sgn):
+    if sgn == "X":  
+        who = 'me'  
+    elif sgn == "O":  
+        who = 'you'  
+    else:
+        who = None  
+    cross1 = cross2 = True
+    for rc in range(3):
+        if board[rc][0] == sgn and board[rc][1] == sgn and board[rc][2] == sgn:  # verifica a linha rc
+            return who
+        if board[0][rc] == sgn and board[1][rc] == sgn and board[2][rc] == sgn:  # verifica a coluna rc
+            return who
+        if board[rc][rc] != sgn:  
+            cross1 = False
+        if board[2 - rc][2 - rc] != sgn:  
+            cross2 = False
+        if cross1 or cross2:
+            return who
+        return None
